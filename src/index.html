@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <tab-group></tab-group>
 
-    <script src="../node_modules/electron-tabs/dist/electron-tabs.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Cheweek</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+
+  <tab-group new-tab-button="true"></tab-group>
+
+  <script src="../node_modules/electron-tabs/dist/electron-tabs.js"></script>
+
+  <script>
+    // Select tab-group
+    const tabGroup = document.querySelector("tab-group");
+
+    // Setup the default tab which is created when the "New Tab" button is clicked
+    tabGroup.setDefaultTab({
+      title: "Cheweek",
+      src: "https://app.cheweek.com/",
+      active: true
+    });
+
+    // Do stuff
+    const tab = tabGroup.addTab({
+      title: "Cheweek",
+      src: "https://app.cheweek.com/"
+    });
+    tab.once("webview-ready", (tab) => {
+      console.log(tab);
+     });
+    const pos = tab.getPosition();
+    console.log("Tab position is " + pos);
+  </script>
+</body>
+
 </html>
