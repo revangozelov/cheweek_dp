@@ -30,21 +30,25 @@
   const browserWindow = new BrowserWindow({
     width: 1000,
     height: 600,
+    icon: __dirname + '/logo.ico',
     autoHideMenuBar: true,
     webPreferences: {
       // Same session given to Extensions class
       session: browserSession,
       // Recommended options for loading remote content
       sandbox: true,
-      contextIsolation: true
+      contextIsolation: true,
+      nodeIntegration: true,
     },
-    icon: __dirname + '/test.ico',
+
   })
-  console.log(__dirname + '/test.ico');
 
   // Adds the active tab of the browser
   extensions.addTab(browserWindow.webContents, browserWindow);
 
-  browserWindow.loadURL('https://app.cheweek.com')
-  browserWindow.show();
+  browserWindow.loadURL('https://app.cheweek.com/')
+  browserWindow.on('ready-to-show', function () {
+    browserWindow.show();
+    browserWindow.focus();
+  });
 }())
