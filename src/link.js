@@ -1,0 +1,1 @@
+const urlGl = "https://cheweek.elcom.az/cheweek1/public/"
