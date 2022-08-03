@@ -12,7 +12,7 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 1400,
     height: 800,
-    icon: path.join(__dirname, 'logo.ico'),
+    icon: path.join(__dirname, 'logo_256.ico'),
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
