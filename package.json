@@ -1,6 +1,6 @@
 {
   "name": "cheweek_dp",
-  "productName": "Cheweek Azsuvenir MMC",
+  "productName": "Cheweek Elcom MMC",
   "version": "1.1.1",
   "description": "My Electron application description",
   "main": "src/index.js",
@@ -30,8 +30,8 @@
     "webpack": "^5.74.0"
   },
   "build": {
-    "appId": "com.cheweek.app",
-    "productName": "Cheweek_azsuvenir",
+    "appId": "com.cheweek_elcom.app",
+    "productName": "Cheweek_elcom",
     "target": "NSIS",
     "icon": "src/logo_256.ico",
     "directories": {
