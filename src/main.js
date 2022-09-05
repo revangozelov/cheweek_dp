@@ -4,7 +4,7 @@ const tabGroup = document.querySelector("tab-group");
 // Setup the default tab which is created when the "New Tab" button is clicked
 tabGroup.setDefaultTab({
     title: "Cheweek",
-    src: urlGl
+    src: urlGl+'index.html?lastMenuId=21010300595707289233'
 });
 
 // Do stuff
@@ -32,6 +32,10 @@ function event_binder(tab) {
                 src: e.url
             });
         }
+    });
+ //   window.transferEvent.setTab(tab)
+    tab.webview.addEventListener("dom-ready", function () {
+        tab.webview.openDevTools();
     });
 }
 

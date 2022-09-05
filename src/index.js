@@ -16,7 +16,8 @@ const createWindow = () => {
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      webviewTag:true, //for webView
+      webviewTag: true, //for webView
+      webSecurity: false
     },
   });
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
