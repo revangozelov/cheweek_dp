@@ -1,13 +1,13 @@
 {
   "name": "cheweek_dp",
-  "productName": "Cheweek Elcom MMC",
+  "productName": "Cheweek MMC",
   "version": "1.1.1",
   "description": "My Electron application description",
   "main": "src/index.js",
   "scripts": {
     "start": "electron .",
     "package": "electron-forge package",
-    "make": "electron-forge make",
+    "make": "electron",
     "publish": "electron-forge publish",
     "buildmac": "electron-packager . VT2_Server --overwrite --platform=darwin --icon=data/media/server.ico --prune=true --out=../builds",
     "dist": "electron-builder"
@@ -24,16 +24,16 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "electron": "^14.0.1",
-    "electron-builder": "^19.52.1",
+    "electron": "^14.2.9",
+    "electron-builder": "^23.1.0",
     "laravel-mix": "^6.0.49",
     "webpack": "^5.74.0"
   },
   "build": {
-    "appId": "com.cheweek_elcom.app",
-    "productName": "Cheweek_elcom",
+    "appId": "com.cheweek_main.app",
+    "productName": "Cheweek_main",
     "target": "NSIS",
-    "icon": "src/logo_256.ico",
+    "icon": "src/logo_512.png",
     "directories": {
       "output": "build"
     },
