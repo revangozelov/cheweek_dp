@@ -34,9 +34,9 @@ function event_binder(tab) {
         }
     });
  //   window.transferEvent.setTab(tab)
-    tab.webview.addEventListener("dom-ready", function () {
+   /*  tab.webview.addEventListener("dom-ready", function () {
         tab.webview.openDevTools();
-    });
+    }); */
 }
 
 function replaceTitle(dt) {

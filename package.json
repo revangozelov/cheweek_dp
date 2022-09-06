@@ -1,6 +1,6 @@
 {
   "name": "cheweek_dp",
-  "productName": "Cheweek MMC",
+  "productName": "Cheweek Test MMC",
   "version": "1.1.1",
   "description": "My Electron application description",
   "main": "src/index.js",
@@ -30,8 +30,8 @@
     "webpack": "^5.74.0"
   },
   "build": {
-    "appId": "com.cheweek_main.app",
-    "productName": "Cheweek_main",
+    "appId": "com.cheweek_test.app",
+    "productName": "Cheweek_test",
     "target": "NSIS",
     "icon": "src/logo_512.png",
     "directories": {
