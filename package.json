@@ -1,8 +1,8 @@
 {
   "name": "cheweek_dp",
-  "productName": "Cheweek Test MMC",
+  "productName": "Cheweek",
   "version": "1.1.1",
-  "description": "My Electron application description",
+  "description": "Cheewek desktop app",
   "main": "src/index.js",
   "scripts": {
     "start": "electron .",
@@ -26,12 +26,13 @@
     "cross-env": "^7.0.3",
     "electron": "^14.2.9",
     "electron-builder": "^23.1.0",
+    "electron-packager": "^16.0.0",
     "laravel-mix": "^6.0.49",
     "webpack": "^5.74.0"
   },
   "build": {
-    "appId": "com.cheweek_test.app",
-    "productName": "Cheweek_test",
+    "appId": "com.cheweek.app",
+    "productName": "Cheweek",
     "target": "NSIS",
     "icon": "src/logo_512.png",
     "directories": {

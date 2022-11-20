@@ -2,5 +2,160 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
   margin: auto;
+  background: #e7eaed;
 }
 
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --gray: #555;
+  --purple: #4e65ff;
+  --green-blue: #92effd;
+  --white: #fff;
+}
+
+.navigation {
+  position: fixed;
+  top: 2px;
+  right: 7px;
+  width: 30px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  background: var(--white);
+  box-shadow: 0 25px 35px rgb(0 0 0 / 10%);
+  overflow: hidden;
+  transition: height 0.5s, width 0.5s;
+  transition-delay: 0s, 0.75s;
+}
+
+.navigation .domain-box {
+  position: relative;
+  width: 60px;
+  height: 20px;
+  display: none;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.navigation .domain-box .domainname {
+  font-size: 0.7rem;
+  white-space: nowrap;
+  color: var(--gray);
+}
+
+.navigation .domain-box .image-box {
+  position: relative;
+  min-width: 60px;
+  height: 60px;
+  background: var(--white);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 10px solid var(--white);
+
+}
+
+.navigation .domain-box .image-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navigation .menu-toggle {
+  position: relative;
+    width: 30px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navigation .menu-toggle::before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 1px;
+  background: var(--gray);
+  transform: translateY(-5px);
+  box-shadow: 0 5px var(--gray);
+  transition: 0.5s;
+}
+
+.navigation .menu-toggle::after {
+  content: "";
+    position: absolute;
+    width: 13px;
+    height: 1px;
+    background: var(--gray);
+    transform: translateY(5px);
+    transition: 0.5s;
+}
+
+.menu {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 60px);
+  margin-top: 20px;
+  padding: 0px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.menu li {
+  list-style: none;
+  padding: 5px;
+}
+
+.menu li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--gray);
+}
+
+.menu li a ion-icon {
+  font-size: 1.5rem;
+}
+.menu li.active {
+  opacity: 0.5;
+  background: rgb(206, 204, 204);
+  pointer-events: none;
+}
+
+.menu li a:hover {
+  color: var(--purple);
+}
+
+.navigation.active .menu-toggle::before {
+  transform: translateY(0px) rotate(45deg);
+  box-shadow: none;
+}
+
+.navigation.active .menu-toggle::after {
+  transform: translateY(0px) rotate(-45deg);
+}
+
+.navigation.active {
+  width: 200px;
+    height: 300px;
+    transition: width 0.5s, height 0.5s;
+    transition-delay: 0s, 0.25s;
+}
+
+.navigation.active .domain-box {
+  width: calc(100% - 60px);
+    transition-delay: 0s;
+    padding-left: 5px;
+    display: flex;
+}

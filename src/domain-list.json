@@ -1,0 +1,17 @@
+[ {
+    "name": "Main",
+    "url": "https://www.google.com/"
+},
+    {
+        "name": "Elcom",
+        "url": "https://cheweek.elcom.az/cheweek1/public/"
+    },
+    {
+        "name": "Azsuvenir",
+        "url": "http://cheweek.azsuvenir.local/cheweek1/public"
+    },
+    {
+        "name": "Test Cheweek",
+        "url": "http://cheweek-test.elcom.az/cheweek1/public"
+    }
+   ]

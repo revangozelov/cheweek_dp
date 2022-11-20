@@ -11,35 +11,67 @@
 </head>
 
 <body>
-  <tab-group sortable="true"  new-tab-button="true">
-    <style>
-      .buttons {
-        padding: 0;
-        background: #dfeef7;
-      }
 
-      .tab.active {
-        background: #285883;
-        color: #ffff;
-      }
+  <div class="container">
+    <tab-group sortable="true" new-tab-button="true">
+      <style>
+        .tab {
+          max-width: max-content;
+          padding: 0;
+        }
 
-      .tab-close button {
-        color: #ffff;
-      }
+        .tab-title {
+          height: 80%;
+          overflow: hidden;
+        }
 
-      .tab-close button:hover {
-        color: var(--button-color);
-        background: var(--button-hover-background);
-      }
-      .views {
-        height: calc(100vh - 23px);
-        position: relative;
-      }
-      .nav {
-        height: 22px;
-      }
-    </style>
-  </tab-group>
+        .nav {
+          width: calc(100% - 40px);
+          height: 22px;
+
+        }
+
+        .buttons {
+          padding: 0;
+          background: #dfeef7;
+        }
+
+        .tab.active {
+          background: #285883;
+          color: #ffff;
+        }
+
+        .tab-close button {
+          color: #ffff;
+        }
+
+        .tab-close button:hover {
+          color: var(--button-color);
+          background: var(--button-hover-background);
+        }
+
+        .views {
+          height: calc(100vh - 23px);
+          position: relative;
+        }
+
+
+        .change-profile {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+        }
+      </style>
+    </tab-group>
+    <div class="navigation" id="navigation">
+      <div class="domain-box">
+        <p class="domainname" id="domainname">Cheweek</p>
+      </div>
+      <div class="menu-toggle"></div>
+      <ul class="menu" id="menu-box">
+      </ul>
+    </div>
+  </div>
   <script src="../node_modules/electron-tabs/dist/electron-tabs.js"></script>
   <script src="link.js"></script>
   <script src="main.js"></script>

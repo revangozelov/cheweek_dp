@@ -1,4 +1,4 @@
-const { app, BrowserWindow,ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-next-line global-require
@@ -21,8 +21,9 @@ const createWindow = () => {
       allowRunningInsecureContent: true,
     },
   });
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
   mainWindow.maximize();
+  //mainWindow.webContents.openDevTools();
+  mainWindow.loadFile(path.join(__dirname, 'index.html'));
 };
 app.on('ready', createWindow);
 app.on('activate', () => {
@@ -30,6 +31,6 @@ app.on('activate', () => {
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
-  }
-});ess
+  };
+});
 // code. You can also put them in separate files and import them here.
