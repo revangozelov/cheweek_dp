@@ -25,6 +25,9 @@ const createWindow = () => {
   //mainWindow.webContents.openDevTools();
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 };
+ipcMain.handle('quit-app', () => {
+  app.quit();
+});
 app.on('ready', createWindow);
 app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the

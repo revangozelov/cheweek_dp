@@ -3,16 +3,14 @@
 
 <head>
   <meta charset="UTF-8" />
-  <!-- <title>Cheweek Elcom MMC</title> -->
-  <!-- <title>Cheweek</title> -->
-  <!-- <title> Cheweek Azsuevnir MMC</title> -->
   <title> Cheweek Test</title>
   <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="bootstrap.css" />
 </head>
 
 <body>
 
-  <div class="container">
+  <div class="">
     <tab-group sortable="true" new-tab-button="true">
       <style>
         .tab {
@@ -65,14 +63,66 @@
     </tab-group>
     <div class="navigation" id="navigation">
       <div class="domain-box">
-        <p class="domainname" id="domainname">Cheweek</p>
+        <p class="domainname m-0" id="domainname">Cheweek</p>
       </div>
       <div class="menu-toggle"></div>
       <ul class="menu" id="menu-box">
       </ul>
     </div>
   </div>
+
+
+
+  <div class="modal fade" id="domainModal" tabindex="-1" role="dialog" aria-labelledby="domainModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="domainModalLabel">Yeni domain</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="form">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Ad:</label>
+              <input type="text" required class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="recipient-url" class="col-form-label">Link:</label>
+              <input type="text" required class="form-control" id="recipient-url">
+            </div>
+            <div class="form-group">
+              <button  type="button" id="add-button" class="btn btn-primary">Əlavə et</button>
+
+            </div>
+            <div class="form-group w-100" style="overflow: auto;">
+              <label for="recipient-url" class="col-form-label">Siyahı</label>
+              <table class="table table-sm table-bordered" id="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ad</th>
+                    <th scope="col">link</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+           
+          </form>
+         
+        </div>
+          
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="../node_modules/electron-tabs/dist/electron-tabs.js"></script>
+  <script src="jquery.js" ></script>
+  <script src="popper.js" ></script>
+  <script src="boot.js" ></script>
   <script src="link.js"></script>
   <script src="main.js"></script>
 </body>
