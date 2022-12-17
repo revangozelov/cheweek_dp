@@ -2,27 +2,55 @@
 const cont = $('#menu-box');
 const titleDomain = document.getElementById('domainname');
 
-let menuToggle = document.querySelector('.menu-toggle');
-let navigation = document.querySelector('.navigation');
 let currentDomain = localStorage.getItem('currentDomain');
 let list;
 let urlGl;
-(async function () {
-    
 
-    menuToggle.onclick = function () {
-        navigation.classList.toggle('active');
-    }
+
+(function () {
+    let defaultList  = [
+        {"name":"Cheweek","url":"https://app.cheweek.com/"}
+    ]
+
+    $(document).on('click','.menu-toggle',function () {
+        $('.navigation').toggleClass('active');
+    })
+    $(document).on('click','#add-button', function (params) {
+        var urk  = $('#recipient-url').val();
+        urk = urk.trim();
+        if (urk.length < 4 &&!urk.contains('cheweek')) {
+            return;
+          }
+          if(list.filter(e => e.url === urk).length > 0){
+            alert('Bu link daxil edilib');
+            return;
+          }
+          if (urk.startsWith('http://')||urk.startsWith('https://')) {
+            list.push({
+                name: $('#recipient-name').val(),
+                url: urk
+            })
+            $('#recipient-url').val('');
+            $('#recipient-name').val(' ')
+            // window.transferEvent.refreshList(list, function (params) {
+            //      loadList();
+            // });
+            refreshTable();
+          }
+      
+    })
     // Select tab-group;
-    async function loadList() {
-        list = await window.transferEvent.getList();
+    function loadList() {
+        var ls  = localStorage.getItem('list');
+        list = ls?JSON.parse(ls) :defaultList;
         list=list||[];
-        setCurrentDomain();
-        if (!list || list.length < 2) {
-            $(navigation).hide();
+        if (!list || list.length == 1) {
+            $('.navigation').hide();
+            currentDomain = list[0];
         }else{
-            $(navigation).show();
+            $('.navigation').show();
         }
+        setCurrentDomain();
         $('#table tbody').empty();
         cont.empty();
         list.forEach((o, i) => {
@@ -42,7 +70,6 @@ let urlGl;
             }
             $('#table tbody').append(it);
         });
-        console.log(list);
     }
     function tblItem(o, i, trig) {
         var dt = $('<button type="button"  class="btn btn-danger">').text('sil');
@@ -50,9 +77,7 @@ let urlGl;
             if (i > -1) { // only splice array when item is found
                 list.splice(i, 1); // 2nd parameter means remove one item only
             }
-            window.transferEvent.refreshList(list, async function (params) {
-                  loadList();
-            });
+            refreshTable();
 
         })
         return $('<tr>')
@@ -60,24 +85,6 @@ let urlGl;
             .append($('<td>').text(o.url))
             .append(trig ? dt : 'current')
     }
-    $('#add-button').on('click', function (params) {
-        var urk  = $('#recipient-url').val();
-        if (urk.length < 4 &&!urk.contains('cheweek')) {
-            return;
-          }
-          if (urk.startsWith('http://')||urk.startsWith('https://')) {
-            list.push({
-                name: $('#recipient-name').val(),
-                url: urk
-            })
-            $('#recipient-url').val('');
-            $('#recipient-name').val(' ')
-            window.transferEvent.refreshList(list, async function (params) {
-                 loadList();
-            });
-          }
-      
-    })
 
     function setCurrentDomain() {
         currentDomain =(typeof currentDomain == 'string') ?JSON.parse(currentDomain):currentDomain || list[0];
@@ -86,13 +93,13 @@ let urlGl;
         titleDomain.innerText = txt;
         urlGl = currentDomain.url;
     }
-    await loadList();
+     loadList();
     const tabGroup = document.querySelector("tab-group");
 
     // Setup the default tab which is created when the "New Tab" button is clicked
     tabGroup.setDefaultTab({
         title: "Cheweek",
-        src: urlGl + 'index.html?lastMenuId=21010300595707289233'
+        src: urlGl + '?lastMenuId=21010300595707289233'
     });
 
     // Do stuff
@@ -141,6 +148,10 @@ let urlGl;
         /*  tab.webview.addEventListener("dom-ready", function () {
              tab.webview.openDevTools();
          }); */
+    }
+    function refreshTable(){
+     localStorage.setItem('list',JSON.stringify(list))
+     loadList();
     }
 
     function replaceTitle(dt) {
@@ -195,8 +206,6 @@ addEventListener("keydown", (event) => {
     }
 
 });
-
-
 addEventListener("keyup", (event) => {
     reset1()
 });
