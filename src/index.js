@@ -28,6 +28,9 @@ const createWindow = () => {
 ipcMain.handle('quit-app', () => {
   app.quit();
 });
+ipcMain.handle('new-window', () => {
+  createWindow();
+});
 app.on('ready', createWindow);
 app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the

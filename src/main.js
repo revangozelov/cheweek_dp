@@ -63,6 +63,7 @@ let urlGl;
                 li.on('click', (e) => {
                     clickItem(o);
                 });
+                li.append(redirectButton(o));
                 it = tblItem(o, i, true);
             } else {
                 li.addClass('active');
@@ -70,6 +71,13 @@ let urlGl;
             }
             $('#table tbody').append(it);
         });
+    }
+    function redirectButton(dt){
+          return $(`<button class="btn float-right btn-sm btn-info" title="Yeni pəncərədə aç">`).html('<i class="fas fa-window-restore"></i>').on('click',(e)=>{
+            e.stopPropagation();
+            localStorage.setItem('currentDomain', JSON.stringify(dt));
+            window.transferEvent.newWindow();
+          })
     }
     function tblItem(o, i, trig) {
         var dt = $('<button type="button"  class="btn btn-danger">').text('sil');

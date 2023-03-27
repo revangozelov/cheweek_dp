@@ -18,5 +18,8 @@ contextBridge.exposeInMainWorld('transferEvent', {
     } ,
     appQuit:  () => {
         ipcRenderer.invoke('quit-app');
+    },
+    newWindow:  () => {
+        ipcRenderer.invoke('new-window');
     } 
 })
