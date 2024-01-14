@@ -143,7 +143,7 @@ let urlGl;
             tab.setTitle(replaceTitle(tab.webview.getTitle()));
         });
         tab.webview.addEventListener('new-window', (e) => {
-            if (e.disposition == 'new-window') {
+            if (e.disposition == 'new-window'&&e.frameName=="") {
                 window.open(e.url, '_blank', 'autoHideMenuBar=true,width=1100,height=800,nodeIntegration=no');
             } else {
                 tabGroup.addTab({
