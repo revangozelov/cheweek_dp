@@ -9,7 +9,7 @@ let urlGl;
 
 (function () {
     let defaultList  = [
-        {"name":"Cheweek","url":"https://app.cheweek.com/"}
+        {"name":"Cheweek","url":"https://cheweek.com/dev"}
     ]
 
     $(document).on('click','.menu-toggle',function () {
