@@ -17,7 +17,7 @@
     "name": "Revan Gozalov",
     "email": "gozelov.revan@gmail.com"
   },
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
     "electron-tabs": "^1.0.1"
@@ -31,7 +31,7 @@
     "webpack": "^5.74.0"
   },
   "build": {
-    "appId": "com.cheweek.app",
+    "appId": "com.cheweek_dp.app",
     "productName": "Cheweek",
     "target": "NSIS",
     "icon": "src/logo_512.png",
