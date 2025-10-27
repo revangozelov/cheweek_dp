@@ -8,24 +8,26 @@ let urlGl;
 
 
 (function () {
-    let defaultList  = [
-        {"name":"Cheweek","url":"https://app.cheweek.com/"}
+    let defaultList = [
+        // {"name":"Cheweek","url":"https://app.cheweek.com/"} 
+        { "name": "cheweek", "url": "http://cheweek-app.azsuvenir.local/test2" },
+        // { "name": "Elcom-Outdor", "url": "https://outdoorelcom.cheweek.az" }
     ]
 
-    $(document).on('click','.menu-toggle',function () {
+    $(document).on('click', '.menu-toggle', function () {
         $('.navigation').toggleClass('active');
     })
-    $(document).on('click','#add-button', function (params) {
-        var urk  = $('#recipient-url').val();
+    $(document).on('click', '#add-button', function (params) {
+        var urk = $('#recipient-url').val();
         urk = urk.trim();
-        if (urk.length < 4 &&!urk.contains('cheweek')) {
+        if (urk.length < 4 && !urk.contains('cheweek')) {
             return;
-          }
-          if(list.filter(e => e.url === urk).length > 0){
+        }
+        if (list.filter(e => e.url === urk).length > 0) {
             alert('Bu link daxil edilib');
             return;
-          }
-          if (urk.startsWith('http://')||urk.startsWith('https://')) {
+        }
+        if (urk.startsWith('http://') || urk.startsWith('https://')) {
             list.push({
                 name: $('#recipient-name').val(),
                 url: urk
@@ -36,18 +38,18 @@ let urlGl;
             //      loadList();
             // });
             refreshTable();
-          }
-      
+        }
+
     })
     // Select tab-group;
     function loadList() {
-        var ls  = localStorage.getItem('list');
-        list = ls?JSON.parse(ls) :defaultList;
-        list=list||[];
+        var ls = localStorage.getItem('list');
+        list = ls ? JSON.parse(ls) : defaultList;
+        list = list || [];
         if (!list || list.length == 1) {
             $('.navigation').hide();
             currentDomain = list[0];
-        }else{
+        } else {
             $('.navigation').show();
         }
         setCurrentDomain();
@@ -72,12 +74,12 @@ let urlGl;
             $('#table tbody').append(it);
         });
     }
-    function redirectButton(dt){
-          return $(`<button class="btn float-right btn-sm btn-info" title="Yeni pəncərədə aç">`).html('<i class="fas fa-window-restore"></i>').on('click',(e)=>{
+    function redirectButton(dt) {
+        return $(`<button class="btn float-right btn-sm btn-info" title="Yeni pəncərədə aç">`).html('<i class="fas fa-window-restore"></i>').on('click', (e) => {
             e.stopPropagation();
             localStorage.setItem('currentDomain', JSON.stringify(dt));
             window.transferEvent.newWindow();
-          })
+        })
     }
     function tblItem(o, i, trig) {
         var dt = $('<button type="button"  class="btn btn-danger">').text('sil');
@@ -95,13 +97,13 @@ let urlGl;
     }
 
     function setCurrentDomain() {
-        currentDomain =(typeof currentDomain == 'string') ?JSON.parse(currentDomain):currentDomain || list[0];
+        currentDomain = (typeof currentDomain == 'string') ? JSON.parse(currentDomain) : currentDomain || list[0];
         var txt = currentDomain.name + ' | Cheweek'
         document.title = txt;
         titleDomain.innerText = txt;
         urlGl = currentDomain.url;
     }
-     loadList();
+    loadList();
     const tabGroup = document.querySelector("tab-group");
 
     // Setup the default tab which is created when the "New Tab" button is clicked
@@ -124,7 +126,7 @@ let urlGl;
     });
     tabGroup.on("tab-removed", (tab, tabGroups) => {
         addWidth();
-        if(tabGroups.getTabs().length<1){
+        if (tabGroups.getTabs().length < 1) {
             window.transferEvent.appQuit();
         }
     });
@@ -157,9 +159,9 @@ let urlGl;
              tab.webview.openDevTools();
          }); */
     }
-    function refreshTable(){
-     localStorage.setItem('list',JSON.stringify(list))
-     loadList();
+    function refreshTable() {
+        localStorage.setItem('list', JSON.stringify(list))
+        loadList();
     }
 
     function replaceTitle(dt) {
